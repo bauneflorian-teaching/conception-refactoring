@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "javac",
+            "args": [
+                "-d",
+                "build",
+                "-cp",
+                ".:/libs/sqlite-jdbc.jar:/libs/slf4j-api.jar",
+                "Main.java",
+                "library/*.java"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+	"name": "Java SQLite DevContainer",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			}
+		}
+	},
+	"postCreateCommand": "echo 'Prêt à coder en Java avec SQLite 🐘'"
+}
