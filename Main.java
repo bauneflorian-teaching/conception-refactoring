@@ -13,8 +13,6 @@ public class Main {
             System.err.println("Driver SQLite non trouvé : " + e.getMessage());
         }
         
-        // Mélange de la logique d'I/O, de la logique métier et des appels à la base de
-        // données
         LibraryManager lm = new LibraryManager();
         LoanManager loanManager = new LoanManager();
         Scanner scanner = new Scanner(System.in);

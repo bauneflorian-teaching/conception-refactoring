@@ -28,13 +28,11 @@ public class LibraryManager {
             System.out.println("Database error: " + e.getMessage());
         }
 
-        // Chargement des données depuis SQLite dans des listes locales
         loadBooks();
         loadMembers();
         loadReservations();
     }
 
-    // Chargement des livres depuis la base SQLite
     public void loadBooks() {
         try {
             Statement stmt = connection.createStatement();
@@ -105,7 +103,6 @@ public class LibraryManager {
         }
         books.add(book);
         System.out.println("Added book: " + book.getInfo());
-        // Appel direct à la base de données dans la même méthode
         try {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("INSERT INTO books VALUES (" + book.id + ", '" + book.title + "', '" + book.author
@@ -134,7 +131,6 @@ public class LibraryManager {
     }
 
     public void reserveBook(int bookId, int memberId, String reservationDate) {
-        // Recherche du livre et du membre de façon dupliquée (DRY)
         Book book = null;
         for (Book b : books) {
             if (b.id == bookId) {
@@ -171,7 +167,6 @@ public class LibraryManager {
             book.isReserved = true;
             System.out.println("Reservation made: " + reservation.getReservationInfo());
             
-            // Appels à la base de données intégrés dans la logique métier
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("INSERT INTO reservations VALUES (" + book.id + ", " + member.id + ", '"
             + sdf.format(reservation.reservationDate) + "')");
